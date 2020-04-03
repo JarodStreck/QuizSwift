@@ -11,12 +11,11 @@ import Foundation
 class NinjaQuizSession : WarriorQuizSession {
     var _currentQuestionTickCount: Int
     let _maxQuestionTickCount = 3
-    
+    override class var  rules: String {return "15 question, timer de 3 seconde par question"}
     override init(questionRepository: QuestionRepository, totalQuestionCount: Int = 15) {
         _currentQuestionTickCount = 0
         super.init(questionRepository: questionRepository, totalQuestionCount: totalQuestionCount)
     }
-
     override func nextQuestion() -> Question? {
         if let question = super.nextQuestion() {
             // Reset the question timer count

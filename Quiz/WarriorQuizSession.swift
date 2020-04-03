@@ -11,12 +11,12 @@ import Foundation
 class WarriorQuizSession : JourneymanQuizSession {
     var _currentTickCount: Int
     let _maxTickCount = 30
-    
+    override class var  rules: String {return "15 questions, timer de 30 pour le quizz"}
     override init(questionRepository: QuestionRepository, totalQuestionCount: Int = 15) {
         _currentTickCount = 0
         super.init(questionRepository: questionRepository, totalQuestionCount: totalQuestionCount)
     }
-
+    
     override func nextQuestion() -> Question? {
         if _currentTickCount >= _maxTickCount {
             return nil

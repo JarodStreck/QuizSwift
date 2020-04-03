@@ -12,14 +12,16 @@ class StartViewController: UIViewController {
     
     @IBOutlet var scoreLabel: UILabel!
     
+    @IBOutlet var rules: UILabel!
+    
     var session: QuizSession?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        rules.isHidden = true
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -45,11 +47,35 @@ class StartViewController: UIViewController {
         showSessionView(session!)
     }
     
+    @IBAction func challengeSessionsClick(_ sender: AnyObject) {
+        session = ChallengeQuizSession(questionRepository: makeQuestionRepository())
+        showSessionView(session!)
+    }
     func makeQuestionRepository() -> QuestionRepository {
         //return RemoteQuestionRepository(remoteUrl: "http://localhost:4567")
         return StaticQuestionRepository()
     }
     
+    @IBAction func rookieShowRules(_ sender: Any) {
+        rules.isHidden = false
+        rules.text = RookieQuizSession.rules
+    }
+    @IBAction func journeymanShowRules(_ sender: Any) {
+        rules.isHidden = false
+        rules.text = JourneymanQuizSession.rules
+    }
+    @IBAction func warriorShowRules(_ sender: Any) {
+        rules.isHidden = false
+        rules.text = WarriorQuizSession.rules
+    }
+    @IBAction func ninjaShowRules(_ sender: Any) {
+        rules.isHidden = false
+        rules.text = NinjaQuizSession.rules
+    }
+    @IBAction func challengeShowRules(_ sender: Any) {
+        rules.isHidden = false
+        rules.text = ChallengeQuizSession.rules
+    }
     func showSessionView(_ session: QuizSession)
     {
         let sessionViewController = storyboard?.instantiateViewController(withIdentifier: "sessionVC") as! ViewController

@@ -18,7 +18,7 @@ class QuizSession {
     var _currentQuestion: Question!
     var _totalQuestionCount: Int
     var _score = 0
-    
+    class var rules: String {return " "}
     // Public interface to get the score, as a property
     var score: Int {
         get { return _score }
@@ -28,7 +28,6 @@ class QuizSession {
     var questionsCount: Int {
         get { return _totalQuestionCount }
     }
-
     init(questionRepository: QuestionRepository, totalQuestionCount: Int) {
         _questionRepository = questionRepository
         _totalQuestionCount = totalQuestionCount

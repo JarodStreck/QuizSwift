@@ -10,12 +10,12 @@ import Foundation
 
 class RookieQuizSession : QuizSession {
     var _currentQuestionCount: Int
-    
+    override class var  rules: String {return "Niveau le plus simple, 10 questions"}
     init(questionRepository: QuestionRepository) {
         _currentQuestionCount = 0
         super.init(questionRepository: questionRepository, totalQuestionCount: 10)
     }
-    
+   
     override func nextQuestion() -> Question? {
         _currentQuestionCount += 1
         if _currentQuestionCount > _totalQuestionCount {
